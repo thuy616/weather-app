@@ -1,0 +1,35 @@
+//
+// Utilities classes to simplify
+// components constructions
+// ------------------------------
+
+$text-sm:               $font-size-base * .85;
+$text-md:               $font-size-base * 1.9;
+$text-lg:               $font-size-base * 3;
+
+$margin-base: 10px;
+$margin-sm:   5px;
+$margin-lg:   15px;
+$margin-xl:   30px;
+
+$padding-xl:   30px;
+$padding-lg:   15px;
+$padding-base: 10px;
+$padding-sm:   5px;
+
+$wd-xxs:                60px;
+$wd-xs:                 90px;
+$wd-sm:                 150px;
+$wd-sd:                 200px; // sd == standard
+$wd-md:                 240px;
+$wd-lg:                 280px;
+$wd-xl:                 320px;
+$wd-xxl:                360px;
+$wd-wide:               100%;
+$wd-auto:               auto;
+$wd-zero:               0;
+
+$primary-color:         #0085FF;
+$primary-color-dark:    #004DB3;
+$headings-color:        #3F4A54;
+$text-color-light:      #989B9E;

@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   font-weight: 300;
+}
+#app {
+  margin: 0;
+}
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  min-height: 66px;
+  z-index: 10;
+  background-color: $primary-color;
+  color: #fff;
+  overflow: hidden;
+}
+.holder-panel-header {
+  display: flex;
+  align-items: center;
+  @extend %clearfix;
+  padding: 0 16px;
+  @include media(">=tablet") {
+    padding: 0 28px;
+  }
+  .logo {
+    display: inline-block;
+    z-index: 2;
+    float: left;
+    img {
+      display: block;
+      width: auto;
+    }
+  }
+
+  .app-title {
+    display: inline-block;
+    margin-left: 10px;
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 400;
+  }
+}
+.header-panel {
+  z-index: 1;
+  @extend %clearfix;
+  padding: 8px 52px 8px 59px;
+  @include media(">=tablet") {
+    // position: relative;
+    padding: 8px 67px 8px 59px;
+  }
+  @include media(">=desktop") {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0 8px 22px;
+  }
+}
