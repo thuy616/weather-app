@@ -58,3 +58,26 @@ body {
     padding: 0 0 8px 22px;
   }
 }
+.main {
+  padding: 20px 10px;
+  @include media(">=tablet") {
+    padding: 50px 20px;
+  }
+}
+.search-container {
+  position: relative;
+  width: 100%;
+  .search-bar {
+    display: block;
+    width: 60%;
+    height: 37px;
+    margin: 0 auto;
+    padding: 5px 15px;
+    font-size: 14px;
+    border-radius: 2px;
+    border-width: 0;
+    -webkit-box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.4);
+  }
+}
