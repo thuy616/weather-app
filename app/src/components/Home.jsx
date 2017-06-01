@@ -130,12 +130,10 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    wundergroundData: state.wunderground.results,
-    openweatherData: state.openweather.results,
-    error: state.wunderground.error || state.openweather.error || undefined
-  }
-}
+const mapStateToProps = (state) => ({
+  wundergroundData: state.wunderground.results,
+  openweatherData: state.openweather.results,
+  error: state.wunderground.error || state.openweather.error || undefined
+});
 
-export default connect(mapStateToProps, actions)(Home);
+export default connect(mapStateToProps, actions)(HomeComponent);
