@@ -104,6 +104,7 @@ server.ext("onPreResponse", (request, reply) => {
         <meta name="description" content="weather forecast">
         <meta name="keywords" content="weather forecast">
         <title>${title}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
         <link rel="stylesheet" href="${webserver}/css/main.css"/>
         <link rel="icon" href="${webserver}/img/favicon.ico"/>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places"></script>
