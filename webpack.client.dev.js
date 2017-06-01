@@ -18,6 +18,9 @@ module.exports = {
         new webpack.DefinePlugin({
           "process.env": {
             "NODE_ENV": JSON.stringify(process.env.NODE_ENV) || JSON.stringify('development'),
+            "GOOGLE_MAPS_API_KEY": JSON.stringify(process.env.GOOGLE_MAPS_API_KEY),
+            "OPENWEATHER_API_KEY": JSON.stringify(process.env.OPENWEATHER_API_KEY),
+            "WUNDERGROUND_API_KEY": JSON.stringify(process.env.WUNDERGROUND_API_KEY)
           }
         }),
         new webpack.optimize.OccurenceOrderPlugin(),

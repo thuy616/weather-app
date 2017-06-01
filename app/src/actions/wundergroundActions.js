@@ -2,7 +2,7 @@ import * as actions from './types';
 import axios from 'axios';
 import _ from 'lodash';
 
-const API_KEY = process.env.WUNDERGROUND_API_KEY || `18ecac6602ea1bc4`;
+const API_KEY = process.env.WUNDERGROUND_API_KEY;
 const apiUri = `http://api.wunderground.com/api/${API_KEY}/conditions/q`;
 
 export function fetchWundergroundConditions(country, countryCode, city) {

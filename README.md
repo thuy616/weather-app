@@ -1,7 +1,25 @@
 # WEATHER APP
 
-### Proxying to the external APIs
-Some APIs enforce HTTP access control (CORS) policy. This means sending the requests directly from the browser coming from a different origin will result in Access-Control-Allow-Origin error: `XMLHttpRequest cannot load http://api.wunderground.com/api/{API_KEY}/conditions/q/Sweden/Stockholm.json. The 'Access-Control-Allow-Origin' header has a value 'http://www.wunderground.com' that is not equal to the supplied origin. Origin 'www.example.com' is therefore not allowed access.`
-Unlike the client-side browser, the web server can request access to remote servers outside of its origin. Therefore we use proxy request as follows:
-* The client-side component use 'isomorphic-fetch' to send request to the web server, e.g. GET /api/wunderground/{query}
-* The webserver found matching route for `/api/wunderground` and forward the request to `ttp://api.wunderground.com/api/{API_KEY}/conditions/q/{query}`
+### Live Demo
+* The demo is live at http://my-city-guide.herokuapp.com
+
+### Running the app locally
+* Clone the Github repo `git clone https://github.com/thuy616/weather-app.git`
+* Go to the folder that you just cloned, to install the dependencies, run `npm install`
+* To run the app locally, run `NODE_ENV=develop GOOGLE_MAPS_API_KEY={googleKey} OPENWEATHER_API_KEY={openweatherKey} WUNDERGROUND_API_KEY={wundergroundKey} npm run develop`
+* Open the web-app in the browser at http://localhost:8080
+* The application is automatically rebuilt if any .jsx, .js, .sass file is changed
+
+### Run Test
+`NODE_ENV=develop GOOGLE_MAPS_API_KEY={googleKey} OPENWEATHER_API_KEY={openweatherKey} WUNDERGROUND_API_KEY={wundergroundKey} npm run test`
+
+### External APIs
+* Wunderground Current Weather Conditions https://www.wunderground.com/weather/api/d/docs
+* Openweather API https://openweathermap.org/api
+
+### The Stack
+* Server: NodeJS, HapiJS
+* Client: React, Redux, redux-thunk, axios
+* Unit test: jest, enzyme
+* Build tools: Webpack, Gulp
+* Styling: SASS

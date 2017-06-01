@@ -1,8 +1,8 @@
 import * as actions from './types';
 import axios from 'axios';
 
-const API_KEY = process.env.OPENWEATHER_API_KEY || `170e418d376d5e183569155a8ff23e02`;
-const apiUri = `http://api.openweathermap.org/data/2.5/weather`
+const API_KEY = process.env.OPENWEATHER_API_KEY;
+const apiUri = `http://api.openweathermap.org/data/2.5/weather`;
 
 export function fetchOpenWeatherConditions(countryCode, cityName) {
   return dispatch => {
