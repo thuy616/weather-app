@@ -30,10 +30,6 @@ export function fetchWundergroundConditions(country, countryCode, city) {
             currentObservation = null;
           }
         }
-      } else {
-        // TODO:get error messsage from the response
-        const message = "Failed to fetch data";
-        return Promise.reject(new Error(message))
       }
     })
     .then(() => {
@@ -48,21 +44,20 @@ export function fetchWundergroundConditions(country, countryCode, city) {
     })
     .then(response => {
       if (response && response.status == 200) {
-        console.log('second response:', response);
         currentObservation = response.data.current_observation;
       }
     })
     .then(() => {
-      console.log('currentObservation:', currentObservation);
       dispatch({
         type: actions.FETCH_WUNDERGROUND_DATA,
         payload: currentObservation
       })
     })
     .catch (err => {
+      const message = `Wunderground API Error: ${err.message}`;
       dispatch({
         type: actions.FETCH_WUNDERGROUND_ERROR,
-        payload: err
+        payload: new Error(message)
       })
     })
   }

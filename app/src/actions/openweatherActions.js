@@ -14,22 +14,17 @@ export function fetchOpenWeatherConditions(countryCode, cityName) {
     .then(response => {
       if (response.status === 200) {
         const data = response.data.main;
-        console.log('openweather data', data);
         dispatch({
           type: actions.FETCH_OPENWEATHER_DATA,
           payload: data
         });
-      } else {
-        // dispatch error
-        // TODO:
-        const message = "Failed to fetch data";
-        return Promise.reject(new Error(message));
       }
     })
     .catch(err => {
+      const message = `Openweather API Error: ${err.message}`
       dispatch({
         type: actions.FETCH_OPENWEATHER_ERROR,
-        payload: err
+        payload: new Error(message)
       })
     })
   }

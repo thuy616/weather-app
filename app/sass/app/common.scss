@@ -25,6 +25,8 @@ body {
   background-color: $primary-color;
   color: #fff;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .holder-panel-header {
   display: flex;
@@ -51,6 +53,9 @@ body {
     text-transform: capitalize;
     font-size: 20px;
     font-weight: 400;
+    position: absolute;
+    bottom: 7px;
+    left: 66px;
   }
 }
 .header-panel {
@@ -108,8 +113,9 @@ body {
     }
   }
   .box-data {
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
     border-color: rgba(0,0,0,.3);
     border-radius: 2px;
     border-width: 0;
@@ -119,9 +125,33 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    @include media(">=tablet") {
-      height: 200px;
-      width: 200px
+    .data {
+      font-size: 44px;
+      font-weight: 700;
+      color: #888888;
     }
   }
+}
+.fade-in {
+  -webkit-animation: fade 1s linear 0s forwards 1;
+  animation: fade 1s linear 0s forwards 1;
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    },
+    100% {
+      opacity: 1;
+    }
+  }
+}
+.align-center {
+  text-align: center;
+}
+.bold {
+  font-weight: 700;
+  font-size: 16px;
+}
+.error-message {
+  color: rgba(246, 36, 89, 0.8);
+  font-size: 14px;
 }
