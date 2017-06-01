@@ -2,6 +2,14 @@ body {
   margin: 0;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
    font-weight: 300;
+  a {
+    @include animate(color)
+    color: $primary-color;
+    &:hover {
+      text-decoration: none;
+      color: darken($primary-color, 10%);
+    }
+  }
 }
 #app {
   margin: 0;
@@ -17,6 +25,8 @@ body {
   background-color: $primary-color;
   color: #fff;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .holder-panel-header {
   display: flex;
@@ -33,6 +43,7 @@ body {
     img {
       display: block;
       width: auto;
+      border-radius: 3px;
     }
   }
 
@@ -42,6 +53,9 @@ body {
     text-transform: capitalize;
     font-size: 20px;
     font-weight: 400;
+    position: absolute;
+    bottom: 7px;
+    left: 66px;
   }
 }
 .header-panel {
@@ -80,4 +94,64 @@ body {
     -moz-box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.4);
     box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.4);
   }
+}
+.temp-container {
+  margin-top: 15%;
+}
+.box-data-container {
+  // display: flex;
+  // justify-content: center;
+  padding: 20px;
+  @include media(">=tablet") {
+    padding: 40px;
+  }
+  .box-label {
+    text-align: center;
+    display: block;
+    h4 {
+      font-weight: 700;
+    }
+  }
+  .box-data {
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+    border-color: rgba(0,0,0,.3);
+    border-radius: 2px;
+    border-width: 0;
+    -webkit-box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .data {
+      font-size: 44px;
+      font-weight: 700;
+      color: #888888;
+    }
+  }
+}
+.fade-in {
+  -webkit-animation: fade 1s linear 0s forwards 1;
+  animation: fade 1s linear 0s forwards 1;
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    },
+    100% {
+      opacity: 1;
+    }
+  }
+}
+.align-center {
+  text-align: center;
+}
+.bold {
+  font-weight: 700;
+  font-size: 16px;
+}
+.error-message {
+  color: rgba(246, 36, 89, 0.8);
+  font-size: 14px;
 }

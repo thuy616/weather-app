@@ -10,6 +10,8 @@ global.__CLIENT__ = false;
 global.__SERVER__ = true;
 
 global.process.env.NODE_ENV = process.env.NODE_ENV || "development";
+global.process.env.OPENWEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;
+global.process.env.WUNDERGROUND_API_KEY = process.env.WUNDERGROUND_API_KEY;
 
 if (process.env.NODE_ENV !== "production") {
   if (!require("piping")({hook: true, includeModules: false})) {
