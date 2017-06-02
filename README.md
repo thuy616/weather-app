@@ -11,7 +11,9 @@
 * The application is automatically rebuilt if any .jsx, .js, .sass file is changed
 
 ### Run Test
-`NODE_ENV=develop GOOGLE_MAPS_API_KEY={googleKey} OPENWEATHER_API_KEY={openweatherKey} WUNDERGROUND_API_KEY={wundergroundKey} npm run test`
+* `NODE_ENV=test GOOGLE_MAPS_API_KEY={googleKey} OPENWEATHER_API_KEY={openweatherKey} WUNDERGROUND_API_KEY={wundergroundKey} npm run test`
+* Use 'moxios' to mock the responses of the external APIs
+* Use jest, enzyme, redux-mock-store
 
 ### External APIs
 * Wunderground Current Weather Conditions https://www.wunderground.com/weather/api/d/docs
