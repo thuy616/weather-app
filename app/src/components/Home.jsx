@@ -32,7 +32,7 @@ export class HomeComponent extends Component {
       if (isNaN(num1)) {
         return num2;
       } else if (isNaN(num2)) {
-        return num2;
+        return num1;
       } else if (isNaN(num1) && isNaN(num2)) {
         return '';
       }
@@ -41,10 +41,10 @@ export class HomeComponent extends Component {
 
   render() {
     const { openweatherData, wundergroundData, error } = this.props;
-    const openweatherTemp_C = openweatherData ? (openweatherData.temp - 273.15).toFixed(1) : '';
-    const wundergroundTemp_C = wundergroundData ? wundergroundData.temp_c.toFixed(1) : '';
-    const openweatherTemp_F = openweatherData ? (9/5*(openweatherData.temp - 273.15) + 32).toFixed(1) : '';
-    const wundergroundTemp_F = wundergroundData ? wundergroundData.temp_f.toFixed(1) : '';
+    const openweatherTemp_C = openweatherData == 'initial' ? '' : (openweatherData ? (openweatherData.temp - 273.15).toFixed(1) : 'N.A.');
+    const wundergroundTemp_C = wundergroundData == 'initial' ? '' : ( wundergroundData ? wundergroundData.temp_c.toFixed(1) : 'N.A.');
+    const openweatherTemp_F = openweatherData == 'initial' ? '' : (openweatherData ? (9/5*(openweatherData.temp - 273.15) + 32).toFixed(1) : 'N.A.');
+    const wundergroundTemp_F = wundergroundData == 'initial' ? '' : (wundergroundData ? wundergroundData.temp_f.toFixed(1) : 'N.A.');
 
     let avg_C = this.calculateAverage(openweatherTemp_C, wundergroundTemp_C);
     let avg_F = this.calculateAverage(openweatherTemp_F, wundergroundTemp_F);
@@ -88,7 +88,7 @@ export class HomeComponent extends Component {
         </div>
         <div className="temp-container">
           <Row>
-            <div className="align-center bold">
+            <div className="align-center bold font-24">
               <a href="#" onClick={event => {
                 event.preventDefault();
                 this.setState({ unit: 'C' });
