@@ -1,4 +1,5 @@
 body {
+  height: 100vh;
   margin: 0;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
    font-weight: 300;
@@ -154,4 +155,7 @@ body {
 .error-message {
   color: rgba(246, 36, 89, 0.8);
   font-size: 14px;
+}
+.font-24 {
+  font-size: 24px;
 }
