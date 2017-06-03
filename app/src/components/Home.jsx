@@ -5,7 +5,7 @@ import Autocomplete from 'react-google-autocomplete';
 import { Row, Col } from 'react-bootstrap';
 import ErrorMessage from './ErrorMessage';
 
-class Home extends Component {
+export class HomeComponent extends Component {
 
   constructor(props) {
     super(props);
@@ -136,4 +136,4 @@ const mapStateToProps = (state) => ({
   error: state.wunderground.error || state.openweather.error || undefined
 });
 
-export default connect(mapStateToProps, actions)(Home);
+export default connect(mapStateToProps, actions)(HomeComponent);
