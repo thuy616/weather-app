@@ -5,7 +5,7 @@ import Autocomplete from 'react-google-autocomplete';
 import { Row, Col } from 'react-bootstrap';
 import ErrorMessage from './ErrorMessage';
 
-class Home extends Component {
+export class HomeComponent extends Component {
 
   constructor(props) {
     super(props);
@@ -34,17 +34,17 @@ class Home extends Component {
       } else if (isNaN(num2)) {
         return num2;
       } else if (isNaN(num1) && isNaN(num2)) {
-        return "N.A.";
+        return '';
       }
     }
   }
 
   render() {
     const { openweatherData, wundergroundData, error } = this.props;
-    const openweatherTemp_C = openweatherData ? (openweatherData.temp - 273.15).toFixed(1) : 'N.A.';
-    const wundergroundTemp_C = wundergroundData ? wundergroundData.temp_c.toFixed(1) : 'N.A.';
-    const openweatherTemp_F = openweatherData ? (9/5*(openweatherData.temp - 273.15) + 32).toFixed(1) : 'N.A.';
-    const wundergroundTemp_F = wundergroundData ? wundergroundData.temp_f.toFixed(1) : 'N.A';
+    const openweatherTemp_C = openweatherData ? (openweatherData.temp - 273.15).toFixed(1) : '';
+    const wundergroundTemp_C = wundergroundData ? wundergroundData.temp_c.toFixed(1) : '';
+    const openweatherTemp_F = openweatherData ? (9/5*(openweatherData.temp - 273.15) + 32).toFixed(1) : '';
+    const wundergroundTemp_F = wundergroundData ? wundergroundData.temp_f.toFixed(1) : '';
 
     let avg_C = this.calculateAverage(openweatherTemp_C, wundergroundTemp_C);
     let avg_F = this.calculateAverage(openweatherTemp_F, wundergroundTemp_F);
@@ -103,7 +103,7 @@ class Home extends Component {
               <div className="box-label"><a target="_blank" href="https://www.wunderground.com/weather/api/d/docs"><h4>Wunderground API</h4></a></div>
               <div className='box-data'>
                 <p className="data">
-                  <span className="fade-in">{this.state.unit == "C" ? wundergroundTemp_C : wundergroundTemp_F}°</span>
+                  <span className="fade-in">{this.state.unit == 'C' ? wundergroundTemp_C : wundergroundTemp_F}°</span>
                 </p>
               </div>
             </Col>
@@ -111,7 +111,7 @@ class Home extends Component {
               <div className="box-label"><h4>Average</h4></div>
               <div className='box-data'>
                 <p className="data">
-                  <span className="fade-in">{this.state.unit == "C" ? avg_C : avg_F}°</span>
+                  <span className="fade-in">{this.state.unit == 'C' ? avg_C : avg_F}°</span>
                 </p>
               </div>
               </Col>
@@ -119,7 +119,7 @@ class Home extends Component {
               <div className="box-label"><a target="_blank" href="https://openweathermap.org/api"><h4>Openweather API</h4></a></div>
               <div className='box-data'>
                 <p className="data">
-                  <span className="fade-in">{this.state.unit == "C" ? openweatherTemp_C : openweatherTemp_F}°</span>
+                  <span className="fade-in">{this.state.unit == 'C' ? openweatherTemp_C : openweatherTemp_F}°</span>
                 </p></div>
             </Col>
           </Row>
@@ -136,4 +136,4 @@ const mapStateToProps = (state) => ({
   error: state.wunderground.error || state.openweather.error || undefined
 });
 
-export default connect(mapStateToProps, actions)(Home);
+export default connect(mapStateToProps, actions)(HomeComponent);
