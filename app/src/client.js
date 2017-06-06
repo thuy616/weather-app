@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
+import { ApolloProvider } from 'react-apollo';
 import routes from './routes';
 import configureStore from "./store.js";
+import { client } from './reducers';
 import { syncHistoryWithStore } from 'react-router-redux';
 import cookie from 'react-cookie';
 
@@ -14,10 +16,10 @@ const reactRoot = document.getElementById('app');
 const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
-  <Provider store={store}>
+  <ApolloProvider store={store} client={client}>
     <Router history={history} routes={routes}>
     </Router>
-  </Provider>,
+  </ApolloProvider>,
   reactRoot
 );
 

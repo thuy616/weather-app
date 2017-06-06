@@ -15,6 +15,7 @@ import fs from 'fs';
 
 let routes = routesContainer; // make a copy so that it's writable, routesContainer is read-only
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY || 'AIzaSyDRTSaX6Rc3BG6bFyzpH9RTvGPn3V3rrDA'; // test API key
+
 /**
  * Create Redux store, and get intitial state.
  */
@@ -59,6 +60,41 @@ server.route({
   path: '/{params*}',
   handler: (request, reply) => {
     reply.file('dist' + request.path);
+  }
+});
+
+server.route({
+  method: '*',
+  path: '/api/yelp/{path*}',
+  config: {
+    state: {
+      parse: true, // parse and store in request.state
+      failAction: 'ignore' // may also be 'ignore' or 'log'
+    }
+  },
+  handler: {
+    proxy: {
+      passThrough: true,
+      acceptEncoding: false,
+      mapUri: function (request, callback) {
+        let reqUrl = url.format({protocol: 'https', host: 'api.yelp.com', pathname: request.params.path, query: request.query});
+        callback(null, reqUrl);
+      },
+      onResponse: function (err, res, request, reply, settings, ttl) {
+        Wreck.read(res, { json: true }, function (err, payload) {
+          if (err) {
+            console.error(`API Error - ${request.path}`, err);
+            reply(err);
+          } else {
+            let response = {
+              statusCode: res.statusCode,
+              data: payload
+            }
+            reply(response);
+          }
+        });
+      }
+    }
   }
 });
 
