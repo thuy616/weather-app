@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, browserHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { ApolloProvider } from 'react-apollo';
-import routes from './routes';
 import configureStore from "./store.js";
 import { client } from './reducers';
 import { syncHistoryWithStore } from 'react-router-redux';
 import cookie from 'react-cookie';
+
+import NotFound from './components/NotFound';
+import BasePage from './components/Main';
+import Home from './components/Home';
+import RestaurantList from './components/RestaurantList';
+
+const auth = cookie.load('auth');
+const token = auth ? auth.access_token : '';
+
+console.log('client.js token:', token);
 
 const store = configureStore(window.__INITIAL_STATE__);
 delete window.__INITIAL_STATE__;
@@ -17,7 +26,9 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
   <ApolloProvider store={store} client={client}>
-    <Router history={history} routes={routes}>
+    <Router history={history}>
+      <Route path="/restaurants" component={RestaurantList}>
+      </Route>
     </Router>
   </ApolloProvider>,
   reactRoot

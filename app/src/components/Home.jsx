@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Autocomplete from 'react-google-autocomplete';
 import { Row, Col } from 'react-bootstrap';
 import ErrorMessage from './ErrorMessage';
+import RestaurantList from './RestaurantList';
 
 export class HomeComponent extends Component {
 
@@ -124,6 +125,7 @@ export class HomeComponent extends Component {
             </Col>
           </Row>
         </div>
+
         <ErrorMessage error={this.props.error} />
       </main>
     )

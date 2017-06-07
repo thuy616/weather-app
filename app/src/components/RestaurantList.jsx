@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
+import { graphql, gql } from 'react-apollo';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import cookie from 'react-cookie';
@@ -29,6 +29,7 @@ class RestaurantList extends Component {
   }
 
   render() {
+    console.log('this.props.data', this.props.data);
     return (
       <div>
         Test
@@ -39,6 +40,30 @@ class RestaurantList extends Component {
 
 const mapStateToProps = (state) => ({
   fetchedYelpToken: state.yelp.fetchedYelpToken
-})
+});
 
-export default connect(mapStateToProps, actions)(RestaurantList);
+const SearchBusinesses = gql`
+  query SearchBusinesses {
+    search(term: "restaurants",
+           location: "san francisco",
+           limit: 9) {
+      business {
+        name
+        rating
+        review_count
+        photos
+        location {
+          address1
+          city
+          state
+          country
+        }
+      }
+    }
+  }
+`;
+
+RestaurantList = graphql(SearchBusinesses)(RestaurantList);
+RestaurantList = connect(mapStateToProps, actions)(RestaurantList);
+
+export default RestaurantList;

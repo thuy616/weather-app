@@ -1,7 +1,7 @@
 require("babel-polyfill");
 require("babel-core/register")({
   presets: ["es2015", "stage-2", "react"],
-  "plugins": ["transform-decorators-legacy"]
+  "plugins": ["transform-decorators-legacy", "transform-class-properties"]
 });
 /**
  * Define isomorphic constants.

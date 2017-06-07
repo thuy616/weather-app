@@ -8,13 +8,14 @@ import RestaurantList from './components/RestaurantList';
 export default (
   <Router>
 
-    <Route path="/" component={BasePage}>
-      {/* Default route*/}
+    {/* <Route path="/" component={BasePage}>
       <IndexRoute component={Home}/>
       <Route path="/restaurants" component={RestaurantList}/>
     </Route>
 
-    <Route path="*" component={NotFound} />
+    <Route path="*" component={NotFound} /> */}
+
+    <Route path="/restaurants" commponent={RestaurantList}/>
 
   </Router>
 );
